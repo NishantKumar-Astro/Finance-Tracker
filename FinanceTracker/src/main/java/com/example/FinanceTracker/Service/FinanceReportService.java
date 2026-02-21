@@ -4,6 +4,7 @@ import com.example.FinanceTracker.Model.Category;
 import com.example.FinanceTracker.Repository.TransactionRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,7 @@ public class FinanceReportService {
     // Data Transfer Object (DTO)
     @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class MonthlySummary {
         private YearMonth month;
         private double totalIncome;

@@ -4,6 +4,8 @@ import com.example.FinanceTracker.Model.Transaction;
 import com.example.FinanceTracker.Repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -30,6 +32,7 @@ public class TransactionService {
 
     public Transaction
     createTransaction(Transaction transaction) {
+        transaction.setTransactiondate(LocalDate.now());
         // Validate category exists
         if (transaction.getCategory() != null
                 &&
@@ -39,11 +42,11 @@ public class TransactionService {
         }
 
         // Validate user exists
-        if (transaction.getUser() != null
+        if (transaction.getUsers() != null
                 &&
-                transaction.getUser().getId() != null) {
-            transaction.setUser
-                    (userService.getUserById(transaction.getUser().getId()));
+                transaction.getUsers().getId() != null) {
+            transaction.setUsers
+                    (userService.getUserById(transaction.getUsers().getId()));
         }
 
         return transactionRepository.save(transaction);
@@ -55,7 +58,7 @@ public class TransactionService {
         if (transaction != null) {
             transaction.setDescription(transactionDetails.getDescription());
             transaction.setAmount(transactionDetails.getAmount());
-            transaction.setDate(transactionDetails.getDate());
+            transaction.setTransactiondate(transactionDetails.getTransactiondate());
 
             // Update category if provided
             if (transactionDetails.getCategory() != null
@@ -66,11 +69,11 @@ public class TransactionService {
             }
 
             // Update user if provided
-            if (transactionDetails.getUser() != null
+            if (transactionDetails.getUsers() != null
                     &&
-                    transactionDetails.getUser().getId() != null) {
-                transaction.setUser
-                        (userService.getUserById(transactionDetails.getUser().getId()));
+                    transactionDetails.getUsers().getId() != null) {
+                transaction.setUsers
+                        (userService.getUserById(transactionDetails.getUsers().getId()));
             }
 
             return transactionRepository.save(transaction);
