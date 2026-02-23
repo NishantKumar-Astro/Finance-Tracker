@@ -48,87 +48,87 @@ FinanceTracker/
    ```bash
    git clone https://github.com/yourusername/FinanceTracker.git
    cd FinanceTracker
-2. Configure the database (skip for H2)
-  Edit src/main/resources/application.properties:
-    spring.datasource.url=jdbc:postgresql://localhost:5432/finance_db
-    spring.datasource.username=yourusername
-    spring.datasource.password=yourpassword
-    spring.jpa.hibernate.ddl-auto=update
-3. Build and run
-  bash
-  mvn clean install
-  mvn spring-boot:run
-  The API will be available at http://localhost:8080.
+2. Configure the database (skip for H2)                                     
+  Edit src/main/resources/application.properties:                                      
+    spring.datasource.url=jdbc:postgresql://localhost:5432/finance_db                             
+    spring.datasource.username=yourusername                                   
+    spring.datasource.password=yourpassword                                      
+    spring.jpa.hibernate.ddl-auto=update                                   
+3. Build and run                                   
+  bash                                                      
+  mvn clean install                                                 
+  mvn spring-boot:run                                                            
+  The API will be available at http://localhost:8080.                                             
 
-📋 API Endpoints
-Authentication
-Method	Endpoint	Description	Auth Required
-POST	/api/users/register	Register new user	No
-POST	/api/users/login	Login & receive JWT	No
+📋 API Endpoints                                                
+Authentication                                               
+Method	Endpoint	Description	Auth Required                                                
+POST	/api/users/register	Register new user	No                                            
+POST	/api/users/login	Login & receive JWT	No                                     
 
-Categories (JWT required)
-Method	Endpoint	Description
-GET	/api/categories	Get all categories
-GET	/api/categories/{id}	Get category by ID
-POST	/api/categories	Create a new category
-PUT	/api/categories/{id}	Update category
-DELETE	/api/categories/{id}	Delete category
+Categories (JWT required)                                                  
+Method	Endpoint	Description                                                     
+GET	/api/categories	Get all categories                                      
+GET	/api/categories/{id}	Get category by ID                                          
+POST	/api/categories	Create a new category                                      
+PUT	/api/categories/{id}	Update category                                           
+DELETE	/api/categories/{id}	Delete category                                        
 
 Transactions (JWT required)
-Method	Endpoint	Description
-GET	/api/transactions	Get all transactions
-GET	/api/transactions/{id}	Get transaction by ID
-GET	/api/transactions/user/{id}	Get transactions for a user
-POST	/api/transactions/create	Create a new transaction
-PUT	/api/transactions/update/{id}	Update transaction
-DELETE	/api/transactions/delete/{id}	Delete transaction
+Method	Endpoint	Description                                                       
+GET	/api/transactions	Get all transactions                                            
+GET	/api/transactions/{id}	Get transaction by ID                                             
+GET	/api/transactions/user/{id}	Get transactions for a user                                             
+POST	/api/transactions/create	Create a new transaction                                          
+PUT	/api/transactions/update/{id}	Update transaction                                
+DELETE	/api/transactions/delete/{id}	Delete transaction                                        
 
 Reports (JWT required)
-Method	Endpoint	Description
-GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)
+Method	Endpoint	Description                                          
+GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)                                            
 
 🧪 Sample Requests
 Login:
 
 json
-POST /api/users/login                                
-{
-  "username": "john",
-  "password": "secret"
+POST /api/users/login                                                  
+{                                       
+  "username": "john",                                         
+  "password": "secret"                                       
 }
-Response: eyJhbGciOiJIUzI1... (JWT token)
+Response: eyJhbGciOiJIUzI1... (JWT token)                                         
 
 Create Transaction:
 
 json
-POST /api/transactions/create
-Authorization: Bearer <your-token>                            
-{
-  "description": "Lunch",
-  "amount": 25.50,
-  "transactionDate": "2025-03-01",
-  "categoryName": "Dining Out",
-  "categoryType": 2,
-  "userId": 1
+POST /api/transactions/create                                                
+Authorization: Bearer <your-token>                                                   
+{                                                                    
+  "description": "Lunch",                                
+  "amount": 25.50,                                             
+  "transactionDate": "2025-03-01",                                        
+  "categoryName": "Dining Out",                               
+  "categoryType": 2,                                     
+  "userId": 1                                   
 }
 
 🗂️ Database Schema:
-Currently not available(coming soon)
+Currently not available(coming soon)                      
 
 🔮 Future Enhancements
-Add pagination for transactions
+Add pagination for transactions                                    
 
-Implement budget limits per category
+Implement budget limits per category                                   
 
-Include email notifications
+Include email notifications                                 
 
-Build a React frontend
+Build a React frontend                              
 
-🤝 Contributing
-Contributions are welcome! Feel free to open issues or submit pull requests.
+🤝 Contributing                                           
+Contributions are welcome! Feel free to open issues or submit pull requests.                     
 
 📄 License
-This project is for educational/demonstration purposes.
+This project is for educational/demonstration purposes.                      
 
 📬 Contact
 Nishant Kuamar – infinityseeker@gmail.com
