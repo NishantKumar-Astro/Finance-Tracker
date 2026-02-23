@@ -91,7 +91,7 @@ GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)
 Login:
 
 json
-POST /api/users/login
+POST /api/users/login                                
 {
   "username": "john",
   "password": "secret"
@@ -102,7 +102,7 @@ Create Transaction:
 
 json
 POST /api/transactions/create
-Authorization: Bearer <your-token>
+Authorization: Bearer <your-token>                            
 {
   "description": "Lunch",
   "amount": 25.50,
