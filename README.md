@@ -22,16 +22,16 @@ FinanceTracker is a secure RESTful API for managing personal finances. Users can
 - **Postman** – API testing
 
 ## 📁 Project Structure
-FinanceTracker/
-├── src/main/java/com/example/FinanceTracker/
-│ ├── config/ – Security and JWT filter configuration
-│ ├── controller/ – REST controllers (User, Category, Transaction, Report)
-│ ├── model/ – JPA entities (Users, Category, Transaction)
-│ ├── repository/ – Spring Data JPA repositories
-│ └── service/ – Business logic (UserService, CategoryService, etc.)
-├── src/main/resources/
-│ └── application.properties – configuration
-└── pom.xml
+FinanceTracker/               
+├── src/main/java/com/example/FinanceTracker/                        
+│ ├── config/ – Security and JWT filter configuration                                             
+│ ├── controller/ – REST controllers (User, Category, Transaction, Report)                                     
+│ ├── model/ – JPA entities (Users, Category, Transaction)                                      
+│ ├── repository/ – Spring Data JPA repositories                               
+│ └── service/ – Business logic (UserService, CategoryService, etc.)                                  
+├── src/main/resources/                                  
+│ └── application.properties – configuration                                    
+└── pom.xml                                   
 
 
 ## 🚀 Getting Started
