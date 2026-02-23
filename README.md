@@ -95,7 +95,7 @@ POST /api/users/login
 {                                       
   "username": "john",                                         
   "password": "secret"                                       
-}
+}                                                                 
 Response: eyJhbGciOiJIUzI1... (JWT token)                                         
 
 Create Transaction:
