@@ -37,7 +37,6 @@ public class Users {
     private List<Transaction> transactions = new ArrayList<>();
 
     // For Security
-    @NotNull
     private String role;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotNull

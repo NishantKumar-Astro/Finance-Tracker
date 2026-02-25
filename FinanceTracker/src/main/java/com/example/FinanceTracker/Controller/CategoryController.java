@@ -2,6 +2,7 @@ package com.example.FinanceTracker.Controller;
 
 import com.example.FinanceTracker.Model.Category;
 import com.example.FinanceTracker.Service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class CategoryController {
 
     @PostMapping
     public ResponseEntity<Category>
-    createCategory(@RequestBody Category category) {
+    createCategory(@Valid @RequestBody Category category) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(Service.createCategory(category));
     }

@@ -1,6 +1,5 @@
 package com.example.FinanceTracker.Service;
 
-//import com.example.FinanceTracker.Model.UserPrincipal;
 import com.example.FinanceTracker.Model.UserPrincipal;
 import com.example.FinanceTracker.Model.Users;
 import com.example.FinanceTracker.Repository.UserRepository;
@@ -23,7 +22,6 @@ public class MyUserDetailsService implements UserDetailsService {
             System.out.println("User Not Found: " + username);
             throw new UsernameNotFoundException("user not found");
         }
-        System.out.println("User Found: " + username + " with password: " + user.getPassword());
         return new UserPrincipal(user);
     }
 }

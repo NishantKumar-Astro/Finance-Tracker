@@ -27,15 +27,18 @@ public class CategoryService {
         return Repo.save(category);
     }
 
-    public Category
-    updateCategory(Long id, Category categoryDetails) {
+    public Category updateCategory(Long id, Category categoryDetails) {
         Category category = getCategoryById(id);
         if (category != null) {
             category.setName(categoryDetails.getName());
-            category.setType(categoryDetails.getType());
+            category.setTypeId(categoryDetails.getTypeId());   
             return Repo.save(category);
         }
         return null;
+    }
+
+    public Category findByNameAndType(String name, int typeId) {
+        return Repo.findByNameAndTypeId(name, typeId).orElse(null);
     }
 
     public boolean

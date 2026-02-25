@@ -8,6 +8,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -37,21 +39,26 @@ public class UserService {
     public Users
     createUser(Users users) {
         users.setPassword(encoder.encode(users.getPassword()));
-        users.setRole("ROLE_USER"); // Set a default role
+        users.setRole("Role_USER"); // Set a default role
         return Repo.save(users);
     }
 
-    public boolean
-    deleteUser(Long id, String email,String password) {
-        if (Repo.existsById(id) && encoder.matches(password,getUserById(id).getPassword())) {
-            Repo.deleteById(id);
+    @Transactional
+    public boolean deleteUser(Long id, String password) {
+        Users user = Repo.findById(id).orElse(null);
+        if (user == null) return false;
+
+        if (encoder.matches(password, user.getPassword())) {
+            // Load transactions to ensure cascade works (optional, but safe)
+            user.getTransactions().size();
+            Repo.delete(user);
             return true;
         }
         return false;
     }
 
 
-    public String verify(Users user) {
+    public String verify(PasswordRequest user) {
         try {
             Authentication authentication = authmanager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
@@ -65,7 +72,5 @@ public class UserService {
         }
         return "Fail: Not Authenticated";
     }
-
-
-
 }
+

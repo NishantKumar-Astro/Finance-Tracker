@@ -1,7 +1,9 @@
 package com.example.FinanceTracker.Controller;
 
 import com.example.FinanceTracker.Model.Transaction;
+import com.example.FinanceTracker.Service.TransactionRequest;
 import com.example.FinanceTracker.Service.TransactionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,24 +32,38 @@ public class TransactionController {
                 ResponseEntity.notFound().build();
     }
 
-    @PostMapping
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Transaction>>
+    getTransactionByUser_id(@PathVariable Long id){
+        try{
+            List<Transaction> transactions = Service.getTransactionByUserid(id);
+            if (transactions != null)
+                return ResponseEntity.ok(transactions);
+            else return ResponseEntity.notFound().build();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @PostMapping("/create")
     public ResponseEntity<Transaction>
-    createTransaction(@RequestBody Transaction transaction) {
+    createTransaction(@Valid @RequestBody TransactionRequest transaction) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(Service.createTransaction(transaction));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Transaction>
-    updateTransaction(@PathVariable Long id, @RequestBody Transaction transaction) {
-        Transaction updatedTransaction =
-                Service.updateTransaction(id, transaction);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Transaction> updateTransaction(
+            @PathVariable Long id,
+            @RequestBody TransactionRequest request) {
+        Transaction updatedTransaction = Service.updateTransaction(id, request);
         return updatedTransaction != null ?
                 ResponseEntity.ok(updatedTransaction) :
                 ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String>
     deleteTransaction(@PathVariable Long id) {
         return Service.deleteTransaction(id) ?
