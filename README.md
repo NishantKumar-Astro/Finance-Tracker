@@ -2,8 +2,12 @@
 
 FinanceTracker is a secure RESTful API for managing personal finances. Users can register, log in, create income/expense categories, record transactions, and view monthly financial summaries. Built with Spring Boot and JWT authentication.
 
+## 🚄 Deployment Platform- Railway                                                       
+https://finance-tracker-production-79c9.up.railway.app/swagger-ui/index.html#/user-controller/login                               
+
 ## ✨ Features
 
+- **Testing** - Junit and Mockito  
 - **User Authentication** – JWT-based login and registration with password encryption (BCrypt)
 - **Category Management** – Create categories with type (INCOME/EXPENSE); unique per user
 - **Transaction Tracking** – Record transactions with amount, date, description, and category
