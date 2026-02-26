@@ -59,10 +59,11 @@ FinanceTracker/
     spring.datasource.password=yourpassword                                      
     spring.jpa.hibernate.ddl-auto=update                                   
 3. Build and run                                   
-  bash                                                      
-  mvn clean install                                                 
-  mvn spring-boot:run                                                            
-  The API will be available at http://localhost:8080.                                             
+     ```bash                                                      
+     mvn clean install                                                 
+     mvn spring-boot:run                                                            
+
+The API will be available at http://localhost:8080.                                             
 
 📋 API Endpoints                                                
 Authentication                                               
@@ -94,14 +95,14 @@ GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)
 🧪 Sample Requests
 Login:
 
-json
+```json
 POST /api/users/login                                                  
 {                                       
   "username": "john",                                         
   "password": "secret"                                       
 }                                                                 
 Response: eyJhbGciOiJIUzI1... (JWT token)                                         
-
+```
 Create Transaction:
 
 json
