@@ -90,7 +90,8 @@ DELETE	/api/transactions/delete/{id}	Delete transaction
 ```
 Reports (JWT required)
 Method	Endpoint	Description                                          
-```GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)                                            
+```
+GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)                                            
 ```
 🧪 Sample Requests
 Login:
