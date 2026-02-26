@@ -68,30 +68,30 @@ The API will be available at http://localhost:8080.
 📋 API Endpoints                                                
 Authentication                                               
 Method	Endpoint	Description	Auth Required                                                
-POST	/api/users/register	Register new user	No                                            
+```POST	/api/users/register	Register new user	No                                            
 POST	/api/users/login	Login & receive JWT	No                                     
-
+```
 Categories (JWT required)                                                  
 Method	Endpoint	Description                                                     
-GET	/api/categories	Get all categories                                      
+```GET	/api/categories	Get all categories                                      
 GET	/api/categories/{id}	Get category by ID                                          
 POST	/api/categories	Create a new category                                      
 PUT	/api/categories/{id}	Update category                                           
 DELETE	/api/categories/{id}	Delete category                                        
-
+```
 Transactions (JWT required)
 Method	Endpoint	Description                                                       
-GET	/api/transactions	Get all transactions                                            
+```GET	/api/transactions	Get all transactions                                            
 GET	/api/transactions/{id}	Get transaction by ID                                             
 GET	/api/transactions/user/{id}	Get transactions for a user                                             
 POST	/api/transactions/create	Create a new transaction                                          
 PUT	/api/transactions/update/{id}	Update transaction                                
 DELETE	/api/transactions/delete/{id}	Delete transaction                                        
-
+```
 Reports (JWT required)
 Method	Endpoint	Description                                          
-GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)                                            
-
+```GET	/api/reports/monthly/{userId}	Monthly summary (income, expense, balance)                                            
+```
 🧪 Sample Requests
 Login:
 
