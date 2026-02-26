@@ -33,12 +33,11 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(TransactionRequest request) {
-
-        // 1. Find or validate category
         Category category = categoryService.findByNameAndType(
                 request.getCategoryName(),
-                request.getCategoryType()
+                request.getCategoryType()          // ← CategoryType
         );
+
         if (category == null) {
             throw new RuntimeException("Category not found: " + request.getCategoryName());
         }
@@ -79,13 +78,11 @@ public class TransactionService {
         }
 
         // Handle category update if provided
-        if (request.getCategoryName() != null && request.getCategoryType() != 0) {
+        if (request.getCategoryName() != null && request.getCategoryType() != null) {
             Category category = categoryService.findByNameAndType(
-                    request.getCategoryName(), request.getCategoryType());
-            if (category == null) {
-                throw new RuntimeException("Category not found");
-            }
-            transaction.setCategory(category);
+                    request.getCategoryName(),
+                    request.getCategoryType()
+            );
         }
 
         // Handle user update if provided (maybe not allowed after creation)

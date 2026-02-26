@@ -1,5 +1,6 @@
 package com.example.FinanceTracker.Service;
 
+import com.example.FinanceTracker.Model.CategoryType;
 import com.example.FinanceTracker.Repository.TransactionRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +22,9 @@ public class FinanceReportService {
         LocalDate end = yearMonth.atEndOfMonth();
 
         double income = transactionRepository
-                .sumAmountByUserAndTypeAndDateBetween(userId,1, start, end);
+                .sumAmountByUserAndTypeAndDateBetween(userId, CategoryType.INCOME, start, end);
         double expense = transactionRepository
-                .sumAmountByUserAndTypeAndDateBetween(userId, 2, start, end);
+                .sumAmountByUserAndTypeAndDateBetween(userId, CategoryType.EXPENSE, start, end);
         double balance = income - expense;
 
         return new MonthlySummary(yearMonth, income, expense, balance);

@@ -1,6 +1,7 @@
 package com.example.FinanceTracker.Service;
 
 import com.example.FinanceTracker.Model.Category;
+import com.example.FinanceTracker.Model.CategoryType;
 import com.example.FinanceTracker.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,14 +32,14 @@ public class CategoryService {
         Category category = getCategoryById(id);
         if (category != null) {
             category.setName(categoryDetails.getName());
-            category.setTypeId(categoryDetails.getTypeId());   
+            category.setType(categoryDetails.getType());   // ← now CategoryType
             return Repo.save(category);
         }
         return null;
     }
 
-    public Category findByNameAndType(String name, int typeId) {
-        return Repo.findByNameAndTypeId(name, typeId).orElse(null);
+    public Category findByNameAndType(String name, CategoryType type) {
+        return Repo.findByNameAndType(name, type).orElse(null);
     }
 
     public boolean

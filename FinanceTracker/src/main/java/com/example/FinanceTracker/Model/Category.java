@@ -1,10 +1,10 @@
 package com.example.FinanceTracker.Model;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Entity
 @Data
@@ -17,10 +17,10 @@ public class Category {
     private Long id;
 
     @NotNull
-    private String name; 
+    private String name;
 
     @NotNull
-    @Column(name = "type_id")   // maps to the column in the database
-    private int typeId;          // 1 = INCOME, 2 = EXPENSE
+    @Column(name = "type_id")
+    private CategoryType type;
 
 }

@@ -1,5 +1,6 @@
 package com.example.FinanceTracker.Service;
 
+import com.example.FinanceTracker.Model.CategoryType;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -10,6 +11,6 @@ public class TransactionRequest {
     private Double amount;
     private LocalDate transactionDate;
     private String categoryName;
-    private int categoryType;   // 1 or 2
+    private CategoryType categoryType;   // ← now enum
     private Long userId;
 }
