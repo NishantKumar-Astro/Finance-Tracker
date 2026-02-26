@@ -105,7 +105,7 @@ Response: eyJhbGciOiJIUzI1... (JWT token)
 ```
 Create Transaction:
 
-json
+```json
 POST /api/transactions/create                                                
 Authorization: Bearer <your-token>                                                   
 {                                                                    
@@ -116,7 +116,7 @@ Authorization: Bearer <your-token>
   "categoryType": 2,                                     
   "userId": 1                                   
 }
-
+```
 🗂️ Database Schema:
 Currently not available(coming soon)                      
 
